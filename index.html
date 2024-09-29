@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content=".">
+  <meta name="keywords" content="Robotic assembly tasks; Reinforcement learning finetuning.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SRSA: Skill Retrieval and Adaptation for Robotics Assembly Tasks</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+   -->
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/robotic-arm.png">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+
+  <script type="text/x-mathjax-config"> MathJax.Hub.Config({ TeX: { equationNumbers: { autoNumber: "all" } } }); </script>
+   <script type="text/x-mathjax-config">
+     MathJax.Hub.Config({
+       tex2jax: {
+         inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+         processEscapes: true
+       }
+     });
+   </script>
+   <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">SRSA: Skill Retrieval and Adaptation for Robotics Assembly Tasks</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              Anonymous Authors</span>
+          </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- <embed src="static/images/teaser.pdf" style="width:100%;" frameborder="0"></embed> -->
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Enabling robots to learn novel tasks in a data-efficient manner remains a significant challenge. A common approach to address this issue is leveraging prior experiences, such as sharing multi-task policies on new tasks or learning from transition data in related tasks. While much progress has been made in retrieving relevant prior experience for general pick-and-place manipulation tasks, the application of these methods to contact-rich manipulation tasks remains underexplored, particularly for assembly tasks that require precise control in industries. 
+          </p>
+          <p>
+            In this work, we investigate the problem of utilizing a pre-existing skill library containing diverse policies for various assembly tasks. We introduce SRSA (Skill Retrieval and Skill Adaptation), a novel framework that retrieves relevant skills from the library and adapts them to efficiently solve new robotic assembly tasks. Our approach involves first predicting transfer success to guide skill retrieval, followed by fine-tuning the retrieved policy with self-imitation learning. We demonstrate that SRSA effectively selects policies with high success rates on new tasks and SRSA learns policies on new tasks with improved performance, stability, and sample efficiency compared to baseline methods, particularly in sparse-reward scenarios. Additionally, SRSA shows promise in continually expanding the skill library across diverse tasks. It provides an efficient way to collect a large set of specialist policies, which support real-world deployment for robotic assembly tasks.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+    <!-- Paper video. -->
+    <!--/ Paper video. -->
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            Website template borrowed from
+              <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
