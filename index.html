@@ -75,6 +75,17 @@
 
 <!-- <embed src="static/images/teaser.pdf" style="width:100%;" frameborder="0"></embed> -->
 
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <img src="static/images/teaser.jpg" width="100%">
+      <h4 class="subtitle has-text-centered">
+        <b>Overview of SRSA</b>. In this work, we propose to predict the transfer success of applying prior skills to new tasks and retrieve the skill with the highest transfer success prediction. 
+      </h4>
+    </div>
+  </div>
+</section>
+
 <section class="section">
   <div class="container is-max-desktop">
     <!-- Abstract. -->
@@ -94,7 +105,42 @@
     <!--/ Abstract. -->
 
     <!-- Paper video. -->
+
+    
     <!--/ Paper video. -->
+  </div>
+</section>
+
+<section class="section" id="demo">
+  <div class="container is-max-desktop content">
+    <h2 class="title">SRSA vs. AutoMate in the Real World</h2>
+      <p>
+        We deploy the trained SRSA policies in the real world and directly compare them to AutoMate.
+      </p>
+      <p> 
+        The experimental setup is the same as AutoMate, we place the robot in lead-through (a.k.a., manual guide mode), grasp a plug, guide it into the socket, and record the pose as a target pose. We then programmatically lift the plug until free from contact; apply an $xy$ perturbation of $ \pm 10$ mm, $z$ perturbation of $15 \pm 5$ mm, and yaw perturbation of $\pm 5^{\circ}$; apply $x$, $y$, and $z$ observation noise of $\pm 2$ mm each; and deploy a policy. 
+      </p>
+      <p> 
+        We show the comparison between SRSA policies and AutoMate policies on 5 distinct assemblies in the videos below. 
+    <div id="videoal">
+      <table>
+          <tr>
+            <iframe src="https://player.vimeo.com/video/1014143493?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write" width="100%"></iframe>
+          </tr>
+          <tr>
+            <iframe src="https://player.vimeo.com/video/1014143222?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write" width="100%"></iframe>
+          </tr>
+          <tr>
+            <iframe src="https://player.vimeo.com/video/1014143285?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write" width="100%"></iframe>
+          </tr>
+          <tr>
+            <iframe src="https://player.vimeo.com/video/1014143172?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write" width="100%"></iframe>
+          </tr>
+          <tr>
+            <iframe src="https://player.vimeo.com/video/1014143104?h=bce8b7a76c&amp;title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write" width="100%"></iframe>
+          </tr>
+      </table>
+    </div>
   </div>
 </section>
 
