@@ -194,25 +194,29 @@
 <section class="section" id="real demo">                                                                                  <div class="container is-max-desktop content">
     <h2 class="title">Frequently Asked Questions</h2>
     <ul>
-      <li>Q: How do you initialize the critic network when fine-tuning a policy on a new target task?
+      <li>
+	<b>Q</b>: How do you initialize the critic network when fine-tuning a policy on a new target task?
       </li>
       <p>
-        A: All source policies are initially trained with dense rewards, following the AutoMate approach for specialist policies. When fine-tuning on a target task with dense rewards, we initialize the critic network using the weights of the source policy's critic, as the reward scale is consistent with the one used in the original training. However, if we fine-tune with sparse rewards, we randomly initialize the critic network to accommodate the different reward scale and structure.
+        <b>A</b>: All source policies are initially trained with dense rewards, following the AutoMate approach for specialist policies. When fine-tuning on a target task with dense rewards, we initialize the critic network using the weights of the source policy's critic, as the reward scale is consistent with the one used in the original training. However, if we fine-tune with sparse rewards, we randomly initialize the critic network to accommodate the different reward scale and structure.
       </p>
-      <li>Q: Why does sparse reward sometimes outperform dense reward, for example, in task 1053?
+      <li>
+	<b>Q</b>: Why does sparse reward sometimes outperform dense reward, for example, in task 1053?
       </li>
       <p>
-        A: Task 1053 is relatively simple since both the plug and socket are large and easy to manipulate. In the dense reward setting, following the AutoMate framework, there’s an imitation reward component that encourages the agent to follow a disassembly trajectory. However, this disassembly trajectory may introduce bias, potentially creating local minima or artifacts in the dense reward function. For simpler tasks like this one, sparse rewards that only reward success can provide a more direct and unbiased signal, leading to better performance.
+        <b>A</b>: Task 1053 is relatively simple since both the plug and socket are large and easy to manipulate. In the dense reward setting, following the AutoMate framework, there’s an imitation reward component that encourages the agent to follow a disassembly trajectory. However, this disassembly trajectory may introduce bias, potentially creating local minima or artifacts in the dense reward function. For simpler tasks like this one, sparse rewards that only reward success can provide a more direct and unbiased signal, leading to better performance.
       </p>
-      <li>Q: To retrieve the best policy, rather than training a transfer success predictor, you could instead (at inference time) evaluate all source policies in the library on the target task to get the zero-shot transfer success rate. What are the limitations of this naive approach for retrieval?
+      <li>
+	<b>Q</b>: To retrieve the best policy, rather than training a transfer success predictor, you could instead (at inference time) evaluate all source policies in the library on the target task to get the zero-shot transfer success rate. What are the limitations of this naive approach for retrieval?
       </li>
       <p>
-        A: This approach is indeed a straightforward method for skill retrieval, but it’s computationally intensive. Evaluating a single source policy on a target task requires 1,000 episodes to reliably measure the zero-shot transfer success rate, which takes about 20 minutes on a single V100 GPU. As the skill library grows, this process becomes increasingly costly and unscalable, as evaluating every source policy on each target task to identify the most relevant one would require significant computational resources.
+        <b>A</b>: This approach is indeed a straightforward method for skill retrieval, but it’s computationally intensive. Evaluating a single source policy on a target task requires 1,000 episodes to reliably measure the zero-shot transfer success rate, which takes about 20 minutes on a single V100 GPU. As the skill library grows, this process becomes increasingly costly and unscalable, as evaluating every source policy on each target task to identify the most relevant one would require significant computational resources.
       </p>
-      <li>Q: How do you handle storage for a growing skill library?
+      <li>
+	<b>Q</b>: How do you handle storage for a growing skill library?
       </li>
       <p>
-        A: To manage storage as the skill library expands, we propose maintaining a fixed number of policies that maximize coverage of the task embedding space. Specifically, we propose clustering tasks based on a similarity matrix, where similarity is measured by the zero-shot transfer success rate between any pair of source policies and target tasks. For each cluster, we can retain a single policy capable of addressing all tasks within that cluster.
+        <b>A</b>: To manage storage as the skill library expands, we propose maintaining a fixed number of policies that maximize coverage of the task embedding space. Specifically, we propose clustering tasks based on a similarity matrix, where similarity is measured by the zero-shot transfer success rate between any pair of source policies and target tasks. For each cluster, we can retain a single policy capable of addressing all tasks within that cluster.
       </p>
     </ul>
   </div>
