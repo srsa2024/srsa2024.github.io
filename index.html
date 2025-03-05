@@ -196,13 +196,13 @@ using a state-prediction objective. </li>
 using an action-reconstruction objective. </li>
         </ul>  
       </p>
-      <center><img src="static/images/embedding.png" width="80%"></center><br>
+      <center><img src="static/images/embedding.png" width="70%"></center><br>
 
       <h4 class="title">3. Training Transfer Success Predictor</h4>
       <p>
        The geometry, dynamics, and expert action features are concatenated together to form task features. We then pass the concatenated task features through an MLP to predict the transfer success. 
       </p>
-      <center><img src="static/images/transfer_pred.png" width="80%"></center><br>
+      <center><img src="static/images/transfer_pred.png" width="60%"></center><br>
 
       <h4 class="title">4. Inferring Transfer Success for Retrieval</h4>
       <p>
@@ -217,12 +217,29 @@ using an action-reconstruction objective. </li>
   </div>
 </section>
 
+<section class="section" id="Generalist">
+  <div class="container is-max-desktop content">
+    <h2 class="title">Skill Adaptation</h2>
+    <div class="content has-text-justified">
+      <p>
+      Our ultimate goal is to solve the new task as an RL problem. The retrieved skill is used to initialize the policy network. We subsequently use proximal policy optimization (PPO) and <a href="https://arxiv.org/abs/1806.05635">self-imitation learning</a> to fine-tune the policy on the target task. We compare SRSA with the leading baseline <a href="https://bingjietang718.github.io/automate/">AutoMate</a> to learn specialist policies for two-part assembly tasks. We consider two settings:
+        <ul>
+          <li>Dense-reward setting: includes a reward term imitating disassembly demonstrations and a curriculum.</li>
+          <li>Sparse-reward setting: only provides a nonzero reward for task success to emulate real-world RL fine-tuning, where dense-reward information is much more challenging to acquire. </li>
+        </ul>
+        The learning curves in the set of test tasks show that SRSA achieves strong performance with fewer training epochs and greater stability.
+      </p>
+      <img src="static/images/adaptation.png" width="100%"><br>
+    </div>
+  </div>
+</section>
+
 
 <section class="section" id="real demo">
   <div class="container is-max-desktop content">
     <h2 class="title">SRSA Policy Deployment in Simulation</h2>
       <p>
-        We deploy the trained policies in simulation on 5 distinct assemblies and we show the policy performance in the videos below.
+        We deploy the trained SRSA policies in simulation on 5 distinct assemblies and we show the policy performance in the videos below.
       </p>
     <div id="videoal">
       <table> 
