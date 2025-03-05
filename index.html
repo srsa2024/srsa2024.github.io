@@ -160,9 +160,59 @@ to represent the tasks, allowing us to efficiently learn the transfer success pr
         In this work, we consider the problem setting of solving a new target task leveraging pre-existing skills from a skill library. We focus on two-part assembly tasks as shown below. 
       </p>
       <img src="static/images/assembly_tasks.png" width="100%">
+
       <p>
-        Given a target task, we assume access to a prior task set. The skill library contains policies that solve each of the prior tasks, respectively. To solve a target task, the goal of reinforcement learning is to find a policy that produces an action for each state to maximize the expected return. We propose to first retrieve a skill (i.e., policy) for the most relevant prior task, and then rapidly and effectively adapt to the target task by fine-tuning the retrieved skill.
+      Given a target task, we assume access to a prior task set. The skill library contains policies that solve each of the prior tasks, respectively. To solve a target task, the goal of reinforcement learning is to find a policy that produces an action for each state to maximize the expected return. We propose to first <b>retrieve a skill (i.e., policy) for the most relevant prior task</b>, and then <b>rapidly and effectively adapt to the target task by fine-tuning the retrieved skill</b>.
       </p>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="Specialist">
+  <div class="container is-max-desktop content">
+    <h2 class="title">Skill Retrieval</h2>
+    <div class="content has-text-justified">
+      <p>
+        To effectively retrieve the skills that are useful for a new target task T , we require a means to estimate the potential of applying a source policy to the target task. We are inspired by two points from theoretical perspective:
+        <ul>
+          <li>Applying the same policy on two tasks, similar success rate imply similarity in dynamics and initial state distributions.</li>
+          <li>Fine-tuning a source policy on a target task with similar dynamics to the source task could be efficient.</li>
+        </ul>
+      Therefore, we propose using zero-shot transfer success as a metric to gauge the potential to efficiently adapt a source policy to a target task. To identify a source policy with high zero-shot transfer success on a given target task, we propose to learn <b>a function $F$ to predict zero-shot transfer success</b> for any pair of source policy and target task.
+      </p>
+
+      <h4 class="title">1. Dataset Formulation to Learn Transfer Success Predictor</h4>
+      <p>
+         We treat any two tasks from the prior task set as a source-target task pair. For each pair, we evaluate the source policy on the target task to obtain the zero-shot transfer success rate. The transfer success predictor takes the information about source and target tasks as input, and output the zero-shot transfer success.
+      </p>
+
+      <h4 class="title">2. Learning Task Features for Transfer Success Predictor</h4>
+      <p>We need a strong featurization of both the source and target tasks for efficient learning of transfer success predictor. We propose a framework that jointly captures features of geometry, dynamics, and expert actions to represent the tasks.
+        <ul>
+          <li><b>(a)</b> Geometry features are learned from point-cloud input using a PointNet autoencoder. </li>
+          <li><b>(b)</b> Dynamics features are learned from transition segments
+using a state-prediction objective. </li>
+          <li><b>(c)</b> Expert-action features are learned from transition segments
+using an action-reconstruction objective. </li>
+        </ul>  
+      </p>
+      <center><img src="static/images/embedding.png" width="80%"></center><br>
+
+      <h4 class="title">3. Training Transfer Success Predictor</h4>
+      <p>
+       The geometry, dynamics, and expert action features are concatenated together to form task features. We then pass the concatenated task features through an MLP to predict the transfer success. 
+      </p>
+      <center><img src="static/images/transfer_pred.png" width="80%"></center><br>
+
+      <h4 class="title">4. Inferring Transfer Success for Retrieval</h4>
+      <p>
+       At test time, we use the well-trained transfer success predictor to predict the transfer success of applying any prior policy to a new task. We retrieve the source policy with a high predicted transfer success.
+      </p>
+      <p>
+        We compare our approach (SRSA) with the baseline retrieval strategies (Signature, Behavior, Forward, Geometry), as shown in the figure below. Overall, SRSA retrieves source policies that obtain around 10% higher success rates on the test tasks.
+      </p>
+      <img src="static/images/retrieval.png" width="100%"><br>
+      
     </div>
   </div>
 </section>
