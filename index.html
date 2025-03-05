@@ -152,6 +152,22 @@ to represent the tasks, allowing us to efficiently learn the transfer success pr
   <!--/div>
   </section>-->
 
+<section class="section" id="Problem">
+  <div class="container is-max-desktop content">
+    <h2 class="title">Problem Setup</h2>
+    <div class="content has-text-justified">
+      <p>
+        In this work, we consider the problem setting of solving a new target task leveraging pre-existing skills from a skill library. We focus on two-part assembly tasks as shown below. 
+      </p>
+      <img src="static/images/assembly_tasks.png" width="100%">
+      <p>
+        Given a target task, we assume access to a prior task set. The skill library contains policies that solve each of the prior tasks, respectively. To solve a target task, the goal of reinforcement learning is to find a policy that produces an action for each state to maximize the expected return. We propose to first retrieve a skill (i.e., policy) for the most relevant prior task, and then rapidly and effectively adapt to the target task by fine-tuning the retrieved skill.
+      </p>
+    </div>
+  </div>
+</section>
+
+
 <section class="section" id="real demo">
   <div class="container is-max-desktop content">
     <h2 class="title">SRSA Policy Deployment in Simulation</h2>
