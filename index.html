@@ -99,10 +99,10 @@
 <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
-      <img src="static/images/teaser.jpg" width="100%">
-      <h4 class="subtitle has-text-centered">
+      <embed src="static/images/overview.pdf" width="100%">
+      <!-- h4 class="subtitle has-text-centered">
         <b>Overview of SRSA</b>. In this work, we propose to predict the transfer success of applying prior skills to new tasks and retrieve the skill with the highest transfer success prediction. 
-      </h4>
+	</h4> -->
     </div>
   </div>
 </section>
@@ -115,32 +115,40 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Enabling robots to learn novel tasks in a data-efficient manner remains a significant challenge. A common approach to address this issue is leveraging prior experiences, such as sharing multi-task policies on new tasks or learning from transition data in related tasks. While much progress has been made in retrieving relevant prior experience for general pick-and-place manipulation tasks, the application of these methods to contact-rich manipulation tasks remains underexplored, particularly for assembly tasks that require precise control in industries. 
-          </p>
+            Enabling robots to learn novel tasks in a data-efficient manner is a long-standing challenge. Common strategies involve carefully leveraging prior experiences, especially transition data collected on related tasks. Although much progress has been made for general pick-and-place manipulation, far fewer studies have investigated contact-rich assembly tasks, where precise control is essential.
+	  </p>
           <p>
-            In this work, we investigate the problem of utilizing a pre-existing skill library containing diverse policies for various assembly tasks. We introduce SRSA (Skill Retrieval and Skill Adaptation), a novel framework that retrieves relevant skills from the library and adapts them to efficiently solve new robotic assembly tasks. Our approach involves first predicting transfer success to guide skill retrieval, followed by fine-tuning the retrieved policy with self-imitation learning. We demonstrate that SRSA effectively selects policies with high success rates on new tasks and SRSA learns policies on new tasks with improved performance, stability, and sample efficiency compared to baseline methods, particularly in sparse-reward scenarios. Additionally, SRSA shows promise in continually expanding the skill library across diverse tasks. It provides an efficient way to collect a large set of specialist policies, which support real-world deployment for robotic assembly tasks.
-          </p>
+            We introduce SRSA (Skill Retrieval and Skill Adaptation), a novel framework designed to address this problem by utilizing a pre-existing skill library containing policies for diverse assembly tasks. The challenge lies in identifying which skill from the library is most relevant for fine-tuning on a new task. Our key hypothesis is that skills showing higher zero-shot success rates on a new task are better suited for rapid and effective fine-tuning on that task. To this end, we propose to predict the transfer success for all skills in the skill library on a novel task, and then use this prediction to guide the skill retrieval process. We establish a framework that jointly captures features of object geometry, physical dynamics, and expert actions
+to represent the tasks, allowing us to efficiently learn the transfer success predictor. 
+	  </p>
+	  <p>
+	    Extensive experiments demonstrate that SRSA significantly outperforms the leading baseline. When retrieving and fine-tuning skills on unseen tasks, SRSA achieves a 19% relative improvement in success rate, exhibits 2.6x lower standard deviation across random seeds, and requires 2.4x fewer transition samples to reach a satisfactory success rate, compared to the baseline. In a continual learning setup, SRSA efficiently learns policies for new tasks and incorporates them into the skill library, enhancing future policy learning. Furthermore, policies trained with SRSA in simulation achieve a 90% mean success rate when deployed in the real world.
+	  </p>
         </div>
       </div>
     </div>
     <!--/ Abstract. -->
-
+    
+    <!-- Paper video. -->
+    <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/1027794699?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="srsa_video_2"></iframe></div>
+    <!--/ Paper video. -->
+    <div class="video title is-size-5">5-min overview video</h2>
   </div>
 </section>
 
-<section class="section" id="overview">
+<!--section class="section" id="overview">
   <div class="container is-max-desktop content">
-    <!-- Paper video. -->
+    Paper video.
     <h2 class="title">SRSA Overview</h2>
       <p>
         We briefly introduce SRSA method, experiments and results in the 5-min video below.
       </p>
-    <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/1027794699?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="srsa_video_2"></iframe></div>
-    <!--<div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/1022199337?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="srsa_video (1)"></iframe></div>-->
+      <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/1027794699?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="srsa_video_2"></iframe></div>-->
+      <!--<div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/1022199337?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="srsa_video (1)"></iframe></div>-->
     <!--<div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/1019922368?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="srsa_video"></iframe></div>-->
     <!--/ Paper video. -->
-  </div>
-</section>
+  <!--/div>
+  </section>-->
 
 <section class="section" id="real demo">
   <div class="container is-max-desktop content">
