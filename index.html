@@ -59,8 +59,8 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">SRSA: Skill Retrieval and Adaptation for Robotics Assembly Tasks</h1>
-	  <h2 class="subtitle is-2 conference-title" style="color:blue;"> ICLR 2025 Spotlight </h2>
+          <h1 class="title is-1 publication-title">SRSA: Skill Retrieval and Adaptation for Robotic Assembly Tasks</h1>
+	  <h3 class="subtitle is-3 conference-title" style="color:blue;"> ICLR 2025 Spotlight </h3>
 	  <div class="is-size-5 publication-authors">
             <span class="author-block">
               <a href="https://research.nvidia.com/person/yijie-guo">Yijie Guo</a><sup>1</sup>,
@@ -115,14 +115,13 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Enabling robots to learn novel tasks in a data-efficient manner is a long-standing challenge. Common strategies involve carefully leveraging prior experiences, especially transition data collected on related tasks. Although much progress has been made for general pick-and-place manipulation, far fewer studies have investigated contact-rich assembly tasks, where precise control is essential.
+	  Enabling robots to learn novel tasks in a data-efficient manner is a long-standing challenge. Common strategies involve carefully leveraging prior experiences, especially transition data collected on related tasks. Although much progress has been made for general pick-and-place manipulation, far fewer studies have investigated <b>contact-rich assembly tasks</b>, where precise control is essential.
 	  </p>
           <p>
-            We introduce SRSA (Skill Retrieval and Skill Adaptation), a novel framework designed to address this problem by utilizing a pre-existing skill library containing policies for diverse assembly tasks. The challenge lies in identifying which skill from the library is most relevant for fine-tuning on a new task. Our key hypothesis is that skills showing higher zero-shot success rates on a new task are better suited for rapid and effective fine-tuning on that task. To this end, we propose to predict the transfer success for all skills in the skill library on a novel task, and then use this prediction to guide the skill retrieval process. We establish a framework that jointly captures features of object geometry, physical dynamics, and expert actions
-to represent the tasks, allowing us to efficiently learn the transfer success predictor. 
+	  We introduce SRSA (Skill Retrieval and Skill Adaptation), a novel framework designed to address this problem by utilizing a pre-existing skill library containing policies for diverse assembly tasks. The challenge lies in identifying which skill from the library is most relevant for fine-tuning on a new task. Our key hypothesis is that skills showing <b>higher zero-shot success rates</b> on a new task are better suited for <b>rapid and effective fine-tuning</b> on that task. To this end, we propose to predict the transfer success for all skills in the skill library on a novel task, and then use this prediction to guide the skill retrieval process. We establish a framework that jointly captures <b>features of object geometry, physical dynamics, and expert actions</b> to represent the tasks, allowing us to efficiently learn the transfer success predictor. 
 	  </p>
 	  <p>
-	    Extensive experiments demonstrate that SRSA significantly outperforms the leading baseline. When retrieving and fine-tuning skills on unseen tasks, SRSA achieves a 19% relative improvement in success rate, exhibits 2.6x lower standard deviation across random seeds, and requires 2.4x fewer transition samples to reach a satisfactory success rate, compared to the baseline. In a continual learning setup, SRSA efficiently learns policies for new tasks and incorporates them into the skill library, enhancing future policy learning. Furthermore, policies trained with SRSA in simulation achieve a 90% mean success rate when deployed in the real world.
+	  Extensive experiments demonstrate that SRSA significantly outperforms the leading baseline. When retrieving and fine-tuning skills on unseen tasks, SRSA achieves a <b>19% relative improvement in success rate</b>, exhibits 2.6x lower standard deviation across random seeds, and requires 2.4x fewer transition samples to reach a satisfactory success rate, compared to the baseline. In a continual learning setup, SRSA efficiently learns policies for new tasks and incorporates them into the skill library, enhancing future policy learning. Furthermore, policies trained with SRSA in simulation achieve <b>a 90% mean success rate when deployed in the real world</b>.
 	  </p>
         </div>
       </div>
@@ -130,7 +129,8 @@ to represent the tasks, allowing us to efficiently learn the transfer success pr
     <!--/ Abstract. -->
     
     <!-- Paper video. -->
-    <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/1027794699?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="srsa_video_2"></iframe></div>
+    <!--div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/1027794699?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="srsa_video_2"></iframe></div>-->
+    <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/1063246668?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="srsa_video_3"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
     <!--/ Paper video. -->
     <h2 class="subtitle has-text-centered">
         5-min Overview Video with Narration.
@@ -173,7 +173,7 @@ to represent the tasks, allowing us to efficiently learn the transfer success pr
     <h2 class="title">Skill Retrieval</h2>
     <div class="content has-text-justified">
       <p>
-        To effectively retrieve the skills that are useful for a new target task T , we require a means to estimate the potential of applying a source policy to the target task. We are inspired by two points from theoretical perspective:
+        To effectively retrieve the skills that are useful for a new target task T , we require a means to estimate the potential of applying a source policy to the target task. We are inspired by two intuitive points:
         <ul>
           <li>Applying the same policy on two tasks, similar success rate imply similarity in dynamics and initial state distributions.</li>
           <li>Fine-tuning a source policy on a target task with similar dynamics to the source task could be efficient.</li>
@@ -183,11 +183,11 @@ to represent the tasks, allowing us to efficiently learn the transfer success pr
 
       <h4 class="title">1. Dataset Formulation to Learn Transfer Success Predictor</h4>
       <p>
-         We treat any two tasks from the prior task set as a source-target task pair. For each pair, we evaluate the source policy on the target task to obtain the zero-shot transfer success rate. The transfer success predictor takes the information about source and target tasks as input, and output the zero-shot transfer success.
+         We treat any two tasks from the prior task set as a source-target task pair. For each pair, we evaluate the source policy on the target task to obtain the zero-shot transfer success rate. The transfer success predictor takes the information about source and target tasks as input, and outputs the zero-shot transfer success.
       </p>
 
       <h4 class="title">2. Learning Task Features for Transfer Success Predictor</h4>
-      <p>We need a strong featurization of both the source and target tasks for efficient learning of transfer success predictor. We propose a framework that jointly captures features of geometry, dynamics, and expert actions to represent the tasks.
+      <p>We need a strong featurization of both the source and target tasks for efficient learning of the transfer success predictor. We propose a framework that jointly captures features of geometry, dynamics, and expert actions to represent the tasks.
         <ul>
           <li><b>(a)</b> Geometry features are learned from point-cloud input using a PointNet autoencoder. </li>
           <li><b>(b)</b> Dynamics features are learned from transition segments
@@ -206,7 +206,7 @@ using an action-reconstruction objective. </li>
 
       <h4 class="title">4. Inferring Transfer Success for Retrieval</h4>
       <p>
-       At test time, we use the well-trained transfer success predictor to predict the transfer success of applying any prior policy to a new task. We retrieve the source policy with a high predicted transfer success.
+       At test time, we use the well-trained transfer success predictor to predict the transfer success of applying any prior policy to a new task. We retrieve source policies with high predicted transfer successes.
       </p>
       <p>
         We compare our approach (SRSA) with the baseline retrieval strategies (Signature, Behavior, Forward, Geometry), as shown in the figure below. Overall, SRSA retrieves source policies that obtain around 10% higher success rates on the test tasks.
@@ -224,10 +224,10 @@ using an action-reconstruction objective. </li>
       <p>
       Our ultimate goal is to solve the new task as an RL problem. The retrieved skill is used to initialize the policy network. We subsequently use proximal policy optimization (PPO) and <a href="https://arxiv.org/abs/1806.05635">self-imitation learning</a> to fine-tune the policy on the target task. We compare SRSA with the leading baseline <a href="https://bingjietang718.github.io/automate/">AutoMate</a> to learn specialist policies for two-part assembly tasks. We consider two settings:
         <ul>
-          <li>Dense-reward setting: includes a reward term imitating disassembly demonstrations and a curriculum.</li>
+          <li>Dense-reward setting: includes a reward term imitating reversed disassembly demonstrations, as well as a curriculum.</li>
           <li>Sparse-reward setting: only provides a nonzero reward for task success to emulate real-world RL fine-tuning, where dense-reward information is much more challenging to acquire. </li>
         </ul>
-        The learning curves in the set of test tasks show that SRSA achieves strong performance with fewer training epochs and greater stability. Quantitatively, In the dense-reward setting, SRSA reaches an average success rate of 82.6% on 10 test tasks, outperforming AutoMate (69.4%), corresponding to a relative improvement of 19% in performance. Moreover, SRSA shows greater stability, as AutoMate exhibits a 2.6x higher standard deviation. In the sparse-reward setting, SRSA delivers a notable 135% relative improvement in the average success rate compared to the baseline.
+        The learning curves in the set of test tasks show that SRSA achieves strong performance with fewer training epochs and greater stability. Quantitatively, in the dense-reward setting, SRSA reaches an average success rate of 82.6% on 10 test tasks, outperforming AutoMate (69.4%), corresponding to a relative improvement of 19% in performance. Moreover, SRSA shows greater stability, as AutoMate exhibits a 2.6x higher standard deviation across random seeds. In the sparse-reward setting, SRSA delivers a notable 135% relative improvement in the average success rate compared to the baseline.
       </p>
       <center><img src="static/images/adaptation.png" width="90%"></center><br>
     </div>
@@ -239,7 +239,7 @@ using an action-reconstruction objective. </li>
   <div class="container is-max-desktop content">
     <h2 class="title">SRSA Policy Deployment in Simulation</h2>
       <p>
-        We deploy the trained SRSA policies in simulation on 5 distinct assemblies and we show the policy performance in the videos below.
+        We deploy the trained SRSA policies in simulation on 5 distinct assemblies and show the policy performance in the videos below:
       </p>
     <div id="videoal">
       <table> 
@@ -278,7 +278,7 @@ using an action-reconstruction objective. </li>
         We deploy the trained SRSA policies in the real world and directly compare them to <a href="https://bingjietang718.github.io/automate/">AutoMate</a>.
       </p>
       <p> 
-        The experimental setup is the same as AutoMate, we place the robot in lead-through (a.k.a., manual guide mode), grasp a plug, guide it into the socket, and record the pose as a target pose. We then programmatically lift the plug until free from contact; apply an $xy$ perturbation of $ \pm 10$ mm, $z$ perturbation of $15 \pm 5$ mm, and yaw perturbation of $\pm 5^{\circ}$; apply $x$, $y$, and $z$ observation noise of $\pm 2$ mm each; and deploy a policy. 
+        The experimental setup is the same as AutoMate, we place the robot in lead-through (a.k.a., manual guide mode), grasp a plug, guide it into the socket, and record the pose as a target pose. We then programmatically lift the plug until free from contact; apply an $xy$ perturbation of $ \pm 10$ mm, $z$ perturbation of $15 \pm 5$ mm, and yaw perturbation of $\pm 5$&deg; apply $x$, $y$, and $z$ observation noise of $\pm 2$ mm each; and deploy a policy. 
       </p>
       <p> 
         We show the comparison between SRSA policies and AutoMate policies on 5 distinct assemblies in the videos below. 
@@ -325,7 +325,7 @@ using an action-reconstruction objective. </li>
 	<b>Question</b>: To retrieve the best policy, rather than training a transfer success predictor, you could instead (at inference time) evaluate all source policies in the library on the target task to get the zero-shot transfer success rate. What are the limitations of this naive approach for retrieval?
       </li>
       <p>
-        <b>Answer</b>: This approach is indeed a straightforward method for skill retrieval, but it’s computationally intensive. Evaluating a single source policy on a target task requires 1,000 episodes to reliably measure the zero-shot transfer success rate, which takes about 20 minutes on a single V100 GPU. As the skill library grows, this process becomes increasingly costly and unscalable, as evaluating every source policy on each target task to identify the most relevant one would require significant computational resources.
+        <b>Answer</b>: This approach is indeed a straightforward method for skill retrieval, but it’s computationally intensive. Evaluating a single source policy on a target task requires 1,000 episodes to reliably measure the zero-shot transfer success rate, which takes about 20 minutes on a single V100 GPU. As the skill library grows, this process becomes increasingly costly and unscalable, as evaluating every source policy on each target task to identify the most relevant one would require significant computational resources. Therefore, we train the transfer success predictor F to provide an effective and efficient guidance for retrieval. While its predictions may not always be perfectly accurate, we can retrieve the top-k source skills ranked by the predictor F. Among these k candidates, we identify the most relevant skill by evaluating their zero-shot transfer success on the target task, and ultimately select the skill with the best transfer performance. This top-k selection technique is grounded in the same intuition as introduced in Sec. 4.1: zero-shot transfer success serves as a reliable metric for skill relevance. We provide more details in Appendix A.12.
       </p>
       <li>
 	<b>Question</b>: How do you handle storage for a growing skill library?
